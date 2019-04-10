@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ info?.Genre }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+ 
+  <ion-card *ngIf="info">
+    <ion-card-header>
+      <ion-card-title>
+        {{ info.Title }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ info.Year }}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content >
+      <img [src]="info.Poster" class="info-img">
+      {{ info.Plot }}
+ 
+      <ion-item lines="none">
+        <ion-icon name="star-half" slot="start"></ion-icon>
+        <ion-label>{{ info.imdbRating }}</ion-label>
+      </ion-item>
+
+      <ion-button expand="full" (click)="openWeb()" *ngIf="info.Website && info.Website != 'N/A'">
+        Go to website
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
